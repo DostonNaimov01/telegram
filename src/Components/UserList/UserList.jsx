@@ -2,8 +2,12 @@ import { Box, Button } from "@mui/material";
 import React, { Component } from "react";
 
 class UserList extends Component {
+  acTivedUser = (index)=>{
+    console.log(index);
+    this.props.activedUser(index)
+  }
   render() {
-    const { data } = this.props;
+    const { data, handleClose, handleOpen } = this.props;
     return (
       <Box width={"30%"} height="100%" sx={{ backgroundColor: "gray" }}>
         <Box
@@ -12,7 +16,11 @@ class UserList extends Component {
           display="flex"
           justifyContent={"center"}
         >
-          <Button variant="contained" sx={{ width: "70%", fontSize: "24px" }}>
+          <Button
+            variant="contained"
+            onClick={handleOpen}
+            sx={{ width: "70%", fontSize: "24px" }}
+          >
             Add Contact
           </Button>
         </Box>
@@ -30,6 +38,8 @@ class UserList extends Component {
           </Button> */}
           {data.map((item, index) => (
             <Button
+              onClick={()=>this.acTivedUser(index)}
+              key={index}
               variant="outlined"
               sx={{
                 backgroundColor: "black",
