@@ -3,6 +3,7 @@ import { Box, Typography, Modal, TextField, Button } from "@mui/material";
 import UserList from "./Components/UserList/UserList";
 import Messages from "./Components/Messages/Messages";
 import UserInfo from "./Components/UserInfo/UserInfo";
+import logo1 from './Components/UserInfo/imgs/logo_1.jpg'
 
 const style = {
   position: "absolute",
@@ -24,29 +25,29 @@ class App extends Component {
         _id: 1,
         firstName: "Dilshod",
         lastName: "Murtazoyev",
-        phone: "+998990145867",
-        username: "DilshodMurtazoyev",
+        phone: "990145867",
+        username: "@DilshodMurtazoyev",
       },
       {
         _id: 2,
         firstName: "MUhammad",
         lastName: "Qobiljonov",
-        phone: "+998990145867",
-        username: "DilshodMurtazoyev",
+        phone: "990145867",
+        username: "@DilshodMurtazoyev",
       },
       {
         _id: 3,
         firstName: "Dilshod",
         lastName: "Murtazoyev",
-        phone: "+998990145867",
-        username: "DilshodMurtazoyev",
+        phone: "990145867",
+        username: "@DilshodMurtazoyev",
       },
       {
         _id: 4,
         firstName: "Dilshod",
         lastName: "Murtazoyev",
-        phone: "+998990145867",
-        username: "DilshodMurtazoyev",
+        phone: "990145867",
+        username: "@DilshodMurtazoyev",
       },
     ],
     messages: [
@@ -96,6 +97,43 @@ class App extends Component {
             title: "Valeykum Assalom",
             createdDate: "16:31",
           },
+        ],
+      },
+    ],
+    allMedia: [
+      {
+        user_id: "1",
+        imgs: [
+          {
+            img_url: logo1,
+          },
+          {
+            img_url: logo1,
+          },
+          // {
+          //   img_url: "./imgs/logo_3.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_4.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_5.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_6.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_7.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_8.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_9.jpg",
+          // },
+          // {
+          //   img_url: "./imgs/logo_10.jpg",
+          // },
         ],
       },
     ],
@@ -150,7 +188,7 @@ class App extends Component {
     };
     usersData.push(newUser);
     this.setState({
-      usersData
+      usersData,
     });
     // localStorage.setItem('usersDate', usersData)
     this.handleClose();
@@ -190,8 +228,17 @@ class App extends Component {
           handleClose={this.handleClose}
           handleOpen={this.handleOpen}
         />
-        <Messages messages={this.state.messages} sendBtn={this.sendBtn} activeUserId={this.state.activeUserId} usersData={this.state.usersData}/>
-        <UserInfo />
+        <Messages
+          messages={this.state.messages}
+          sendBtn={this.sendBtn}
+          activeUserId={this.state.activeUserId}
+          usersData={this.state.usersData}
+        />
+        <UserInfo
+          usersData={this.state.usersData}
+          activeUserId={this.state.activeUserId}
+          allMedia={this.state.allMedia}
+        />
 
         <Modal
           open={this.state.open}
